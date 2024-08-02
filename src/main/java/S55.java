@@ -5,7 +5,7 @@
 public class S55 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{0, 1,};
+        int[] nums = new int[]{3,0,8,2,0,0,1};
         System.out.println("canJump(nums) = " + canJump(nums));
     }
 
@@ -38,15 +38,18 @@ public class S55 {
             if (nums[fast] == 0) {
                 // 尝试移动慢指针，看是否能跳到fast+1的位置
                 while (nums[slow] <= (fast - slow) && slow < fast) {
-                    ++slow;
+                    slow++;
                 }
                 // 如果慢指针和快指针重合，说明无法跳到fast+1的位置，返回false
                 if (slow == fast) {
                     return false;
                 }
+                // 快指针向前移动，继续探索
+                fast++;
+            } else {
+                // 快指针直接加上当前的可以跳跃的最远距离。
+                fast += nums[fast];
             }
-            // 快指针向前移动，继续探索
-            ++fast;
         }
         // 如果能遍历到这，说明找到了一条跳到数组最后的路径，返回true
         return true;
