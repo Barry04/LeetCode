@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class S28 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{0, 0, 0, 1, 1, 1, 2, 2, 3,};
+        int[] nums = new int[]{0, 0, 0, 0, 1, 1, 1, 2, 2, 3,};
         System.out.println("removeDuplicates(nums) = " + removeDuplicates(nums));
         System.out.println("nums = " + Arrays.toString(nums));
     }
@@ -26,11 +26,9 @@ public class S28 {
                 fast++;
                 continue;
             }
-            if (slowVal != nums[fast] || slowCount <= 2) {
-                nums[slow] = nums[fast];
-                slow++;
-                slowVal = nums[fast];
-            }
+            nums[slow] = nums[fast];
+            slow++;
+            slowVal = nums[fast];
             fast++;
         }
         return slow;

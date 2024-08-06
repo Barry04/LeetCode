@@ -1,3 +1,6 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * 2. 两数相加
  */
@@ -22,12 +25,13 @@ public class S2 {
     }
 
     public static void main(String[] args) {
+        Map<String, String> stringLinkedHashMap = new LinkedHashMap<>(5, 0.75F, true);
 
         // 输入：l1 = [2,4,3], l2 = [5,6,4]
-        ListNode l1 = createLinkedList(new int[]{2, 2, 4});
+        ListNode l1 = createLinkedList(2, 2, 4);
 
         // 创建 l2 链表: 5 -> 6 -> 4
-        ListNode l2 = createLinkedList(new int[]{9});
+        ListNode l2 = createLinkedList(9);
 
         ListNode curr = addTwoNumbers(l1, l2);
         while (curr != null) {
@@ -96,7 +100,7 @@ public class S2 {
 
 
     // 创建链表的辅助方法
-    public static ListNode createLinkedList(int[] values) {
+    public static ListNode createLinkedList(int... values) {
         if (values == null || values.length == 0) return null;
 
         ListNode head = new ListNode(values[0]);
