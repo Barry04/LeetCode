@@ -19,11 +19,21 @@ public class S121 {
      * @return 返回可能的最大利润
      */
     public static int maxProfit(int[] prices) {
-        int cost = Integer.MAX_VALUE, profit = 0;
-        for (int price : prices) {
-            cost = Math.min(cost, price);
-            profit = Math.max(profit, price - cost);
+        // 处理 null 和空数组的情况
+        if (prices == null || prices.length == 0) {
+            return 0;
         }
+
+        int profit = 0;
+
+        // 遍历价格数组，计算每次价格上涨的差值并累加
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                profit += prices[i] - prices[i - 1];
+            }
+        }
+
         return profit;
     }
+
 }

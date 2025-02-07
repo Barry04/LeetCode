@@ -8,7 +8,7 @@ import java.util.HashMap;
  */
 public class S70 {
 
-    private static HashMap<Integer, Integer> memo = new HashMap<>();
+    private static final HashMap<Integer, Integer> memo = new HashMap<>();
 
     public static int climbStairs(int n) {
         if (n <= 2) {
